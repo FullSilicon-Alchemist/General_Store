@@ -1,0 +1,12 @@
+
+                        Mr.Chips One Stop Shop                        
+Products                       Price                         
+
+milktea                       	100
+coffeebeans                   	300
+ketchup                       	100
+
+Your Total Bill is 500$
+2024-8-29 	 15:11:8
+                 Thankyou for your interest and time.                 
+                   This is computer generated bill.                   
