@@ -1,5 +1,5 @@
 import json
-
+from termcolor import colored
 
 
 def updated_products(products:dict):
@@ -12,22 +12,27 @@ def product_methods() -> None:
     with open("data\\products.json","r") as f:
         products : dict[str,int] = json.load(f)
 
-    if(request == 0):
-        # creating new product
-        products[product] = int(input(f"Enter the price of {product} = "))
-    elif(request in [1,2]):
-        try:
+    try:
+        if(request == 0):
+            #creating new product
+            products[product] = int(input(f"Enter the price of {product} = "))
+            updated_products(products)
+        elif(request == 1):
+            #deleting a product
             products.get(product)
-            if(request == 1):
-                # deleting a product
-                del products[product]
-            else:
-                # changing the price of the product
-                products[product] = int(input(f"Enter the new price of {product} = "))
-        except KeyError:
-            print("Product was not found.")
-            product_methods()
-    else:
-        print("Error! Read the instructions carefully.")
-        product_methods()
-    updated_products(products)
+            del products[product]
+            updated_products(products)
+        elif(request == 2):
+             #changing the price of the product
+             products.get(product)
+             products[product] = int(input(f"Enter the new price of {product} = "))
+             updated_products(products)
+        else:
+            print(colored("Error! Read the instructions carefully.","red"))
+            product_methods()   
+    except ValueError:
+         print(colored("Please Enter a number","red"))  
+         product_methods()
+    except KeyError:
+         print(colored("Product was not found.","red"))
+         product_methods()
